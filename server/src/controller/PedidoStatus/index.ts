@@ -21,7 +21,7 @@ class PedidoStatus {
 
     async show(req: Request, res: Response) {
         const { id } = req.params;
-        const item = await knex('pedido_status').select('*').where('id', id).first();
+        const item = await knex('pedido_status').select('*').where('id_pedido_status', id).first();
         if (!item) {
             return res.status(404).json({
                 sucesso: false,
@@ -73,7 +73,7 @@ class PedidoStatus {
         const { id, descricao } = req.body;
         console.log(req.body);
         await knex('pedido_status')
-            .where('id', id)
+            .where('id_pedido_status', id)
             .update({ descricao: descricao })
             .then(function (resp) {
                 console.log(resp);
@@ -101,7 +101,7 @@ class PedidoStatus {
 
     async delete(request: Request, response: Response) {
         const { id } = request.params;
-        knex('pedido_status').where('id', id).del()
+        knex('pedido_status').where('id_pedido_status', id).del()
             .then(success => {
                 console.log(success);
                 if (success == 1) {
