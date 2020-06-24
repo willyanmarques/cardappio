@@ -3,49 +3,49 @@ import knex from '../../database/connection';
 
 /*******************************************************************************
  |                               ***Cardappio***
- |Classe    : PedidoStatus.ts
+ |Classe    : Categoria.ts
  |Descrição : Crud para a tabela de status do pedido
  |Data      : 26/06/2020
  |
  ********************************************************************************/
 
-class PedidoStatus {
+class Categoria {
 
     /*******************************************************************************
-        |Descrição : Retorna todos os status de pedido cadastrados na base
+        |Descrição : Lista todas as categorias cadatradas na base
         |Data      : 24/06/2020
         |Autor     : Willyan Marques
     ********************************************************************************/
 
     async index(req: Request, res: Response) {
-        const items = await knex('pedido_status').select('*');
-        if (!items) {
-            return res.status(400).json({
-                sucesso: false,
-                mensagemErro: 'Falha ao listar status do pedido.',
-                data: []
+        const items = await knex('categoria').select('*');
+        if (items.length > 0) {
+            return res.json({
+                sucesso: true,
+                mensagemErro: 'Sucesso!',
+                data: items
             });
         }
-        return res.json({
-            sucesso: true,
-            mensagemErro: 'Sucesso!',
-            data: items
+        return res.status(400).json({
+            sucesso: false,
+            mensagemErro: 'Nenhuma categoria encontrada.',
+            data: []
         });
     }
 
     /*******************************************************************************
-        |Descrição : Retorna um status de pedido por id
+        |Descrição : Retorna uma categoria por id
         |Data      : 24/06/2020
         |Autor     : Willyan Marques
     ********************************************************************************/
 
     async show(req: Request, res: Response) {
-        const { id_pedido_status } = req.params;
-        const item = await knex('pedido_status').select('*').where('id_pedido_status', id_pedido_status).first();
+        const { id_categoria } = req.params;
+        const item = await knex('categoria').select('*').where('id_categoria', id_categoria).first();
         if (!item) {
             return res.status(404).json({
                 sucesso: false,
-                mensagemErro: 'Status do pedido não encontrado.',
+                mensagemErro: 'Categoria não encontrada para o id informado.',
                 data: []
             });
         }
@@ -57,27 +57,27 @@ class PedidoStatus {
     }
 
     /*******************************************************************************
-        |Descrição : Cria um novo status de pedido
+        |Descrição : Cria uma nova categoria
         |Data      : 24/06/2020
         |Autor     : Willyan Marques
     ********************************************************************************/
 
     async create(request: Request, response: Response) {
-        const { descricao } = request.body;
-        await knex('pedido_status').insert({ descricao })
+        const { descricao, ativo } = request.body;
+        await knex('categoria').insert({ descricao, ativo })
             .then(insert => {
                 console.log(insert);
                 if (!insert) {
                     return response.status(400).json({
                         sucesso: false,
-                        mensagemErro: 'Falha ao criar status do pedido.',
+                        mensagemErro: 'Falha ao criar categoria.',
                         data: {}
                     });
                 }
                 const id = insert[0];
                 return response.json({
                     sucesso: true,
-                    mensagemErro: 'Status do pedido criado com sucesso!',
+                    mensagemErro: 'Categoria criada com sucesso!',
                     data: {
                         id,
                         descricao
@@ -96,28 +96,28 @@ class PedidoStatus {
     }
 
     /*******************************************************************************
-        |Descrição : Atualiza um status de pedido
+        |Descrição : Atualiza uma categoria
         |Data      : 24/06/2020
         |Autor     : Willyan Marques
     ********************************************************************************/
 
     async update(req: Request, res: Response) {
-        const { id_pedido_status, descricao } = req.body;
+        const { id_categoria, descricao, ativo } = req.body;
         console.log(req.body);
-        await knex('pedido_status')
-            .where('id_pedido_status', id_pedido_status)
-            .update({ descricao: descricao })
+        await knex('categoria')
+            .where('id_categoria', id_categoria)
+            .update({ descricao, ativo })
             .then(function (resp) {
                 console.log(resp);
                 if (resp <= 0) {
                     return res.json({
                         sucesso: false,
-                        mensagemErro: 'Falha ao atualiza status do pedido, id não encontrado.'
+                        mensagemErro: 'Falha ao atualiza categoria, id não encontrado.'
                     });
                 }
                 return res.json({
                     sucesso: true,
-                    mensagemErro: 'Status do pedido atualizado com sucesso.'
+                    mensagemErro: 'Categoria atualizada com sucesso!'
                 });
             })
             .catch(function (error) {
@@ -132,25 +132,25 @@ class PedidoStatus {
     }
 
     /*******************************************************************************
-       |Descrição : Deleta um status do pedido por id
+       |Descrição : Deleta uma categoria por id
        |Data      : 24/06/2020
        |Autor     : Willyan Marques
    ********************************************************************************/
 
     async delete(request: Request, response: Response) {
-        const { id_pedido_status } = request.params;
-        knex('pedido_status').where('id_pedido_status', id_pedido_status).del()
+        const { id_categoria } = request.params;
+        knex('categoria').where('id_categoria', id_categoria).del()
             .then(success => {
                 console.log(success);
                 if (success == 1) {
                     return response.json({
                         sucesso: true,
-                        mensagemErro: 'Status do pedido deletado com sucesso!'
+                        mensagemErro: 'Categoria deletada com sucesso!'
                     }).status(200);
                 }
                 return response.json({
                     sucesso: false,
-                    mensagemErro: 'Falha ao deletar status do pedido, id não encontrado'
+                    mensagemErro: 'Falha ao deletar categoria, id não encontrado.'
                 }).status(404);
             })
             .catch(error => {
@@ -166,4 +166,4 @@ class PedidoStatus {
 
 }
 
-export default PedidoStatus;
+export default Categoria;
