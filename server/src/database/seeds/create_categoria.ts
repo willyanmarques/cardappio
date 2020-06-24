@@ -8,11 +8,11 @@ import Knex from 'knex';
 
 export async function seed(knex: Knex) {
     await knex('categoria').insert([
-        { descricao: 'Cervejas' },
-        { descricao: 'Pizzas' },
-        { descricao: 'Hamburgers' },
-        { descricao: 'Petiscos' },
-        { descricao: 'Sucos' },
-        { descricao: 'Sobremesas' }
+        { descricao: 'Cervejas', ativo: 1 },
+        { descricao: 'Pizzas', ativo: 1 },
+        { descricao: 'Hamburgers', ativo: 1 },
+        { descricao: 'Petiscos', ativo: 1 },
+        { descricao: 'Sucos', ativo: 1 },
+        { descricao: 'Sobremesas', ativo: 1 }
     ]);
 }

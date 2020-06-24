@@ -13,7 +13,7 @@ export async function seed(knex: Knex) {
         { descricao: 'Em preparo' },
         { descricao: 'Cancelado' },
         { descricao: 'Saiu para entrega' },
-        { descricao: 'Entregue' },
+        { descricao: 'Entregue' }
     ]);
 }
 
