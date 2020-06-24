@@ -1,7 +1,21 @@
 import { Request, Response } from 'express';
 import knex from '../../database/connection';
 
+/*******************************************************************************
+ |                               ***Cardappio***
+ |Classe    : PedidoStatus.ts
+ |Descrição : Crud para a tabela de status do pedido
+ |Data      : 26/06/2020
+ |
+ ********************************************************************************/
+
 class PedidoStatus {
+
+    /*******************************************************************************
+        |Descrição : Retorna todos os status de pedido cadastrados na base
+        |Data      : 24/06/2020
+        |Autor     : Willyan Marques
+    ********************************************************************************/
 
     async index(req: Request, res: Response) {
         const items = await knex('pedido_status').select('*');
@@ -19,6 +33,12 @@ class PedidoStatus {
         });
     }
 
+    /*******************************************************************************
+        |Descrição : Retorna um status de pedido por id
+        |Data      : 24/06/2020
+        |Autor     : Willyan Marques
+    ********************************************************************************/
+
     async show(req: Request, res: Response) {
         const { id } = req.params;
         const item = await knex('pedido_status').select('*').where('id_pedido_status', id).first();
@@ -35,6 +55,12 @@ class PedidoStatus {
             data: item
         });
     }
+
+    /*******************************************************************************
+        |Descrição : Cria um novo status de pedido
+        |Data      : 24/06/2020
+        |Autor     : Willyan Marques
+    ********************************************************************************/
 
     async create(request: Request, response: Response) {
         const { descricao } = request.body;
@@ -69,6 +95,12 @@ class PedidoStatus {
             });
     }
 
+    /*******************************************************************************
+        |Descrição : Atualiza um status de pedido
+        |Data      : 24/06/2020
+        |Autor     : Willyan Marques
+    ********************************************************************************/
+
     async update(req: Request, res: Response) {
         const { id, descricao } = req.body;
         console.log(req.body);
@@ -89,6 +121,7 @@ class PedidoStatus {
                 });
             })
             .catch(function (error) {
+                console.log(error)
                 return res.json({
                     sucesso: false,
                     mensagemErro: `Error! ${error.sqlMessage}`,
@@ -98,6 +131,12 @@ class PedidoStatus {
                 }).status(500);
             });
     }
+
+     /*******************************************************************************
+        |Descrição : Deleta um status do pedido por id
+        |Data      : 24/06/2020
+        |Autor     : Willyan Marques
+    ********************************************************************************/
 
     async delete(request: Request, response: Response) {
         const { id } = request.params;

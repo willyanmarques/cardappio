@@ -15,7 +15,12 @@ routes.get('/', (req, res) => {
     })
 });
 
-/** Status do Pedido */
+/*******************************************************************************
+    |Descrição : Rotas para api de status do pedido
+    |Data      : 24/06/2020
+    |Autor     : Willyan Marques
+********************************************************************************/
+
 routes.get('/pedido-status/index', pedidoStatus.index);
 routes.post('/pedido-status/create', pedidoStatus.create);
 routes.get('/pedido-status/show/:id', pedidoStatus.show);
