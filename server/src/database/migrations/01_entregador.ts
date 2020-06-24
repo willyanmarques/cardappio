@@ -4,7 +4,7 @@ export async function up(knex: Knex) {
     knex.schema.hasTable('entregador').then(exists => {
         if (!exists) {
             return knex.schema.createTable('entregador', table => {
-                table.increments('id').primary();
+                table.increments('id_entregador').primary();
                 table.string('nome').notNullable();
                 table.string('sobrenome').notNullable();
                 table.string('email');
@@ -14,6 +14,7 @@ export async function up(knex: Knex) {
                 table.string('bairro').notNullable();
                 table.string('cidade').notNullable();
                 table.string('uf', 2).notNullable();
+                table.integer('status', 1).notNullable();
                 table.timestamp('dataHora').defaultTo(knex.fn.now());
             });
         }
