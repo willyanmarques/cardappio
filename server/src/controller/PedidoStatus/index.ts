@@ -89,6 +89,8 @@ class PedidoStatus {
                 });
             })
             .catch(function (error) {
+                console.log(error);
+                
                 return res.json({
                     sucesso: false,
                     mensagemErro: `Error! ${error.sqlMessage}`,

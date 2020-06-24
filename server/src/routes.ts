@@ -2,8 +2,10 @@ import express from 'express';
 
 /** Controllers **/
 import PedidoStatus from './controller/PedidoStatus';
+import Entregador from './controller/Entregador';
 
 const pedidoStatus = new PedidoStatus();
+const entregador = new Entregador();
 
 const routes = express.Router();
 
@@ -21,5 +23,11 @@ routes.post('/pedido-status/create', pedidoStatus.create);
 routes.get('/pedido-status/show/:id', pedidoStatus.show);
 routes.put('/pedido-status/update', pedidoStatus.update);
 routes.delete('/pedido-status/delete/:id', pedidoStatus.delete);
+
+routes.get('/Entregadores/index', entregador.index);
+routes.post('/Entregadores/create', entregador.create);
+routes.get('/Entregadores/show/:id', entregador.show);
+routes.put('/Entregadores/update', entregador.update);
+routes.delete('/Entregadores/delete/:id', entregador.delete);
 
 export default routes;
