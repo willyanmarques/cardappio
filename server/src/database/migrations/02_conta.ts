@@ -18,9 +18,12 @@ export async function up(knex: Knex) {
                 table.string('uf', 2);
                 table.integer('status', 1).notNullable();
                 table.integer('is_whatsapp', 1);
+                table.integer('tipo_conta_id')
+                    .unsigned()
+                    .notNullable();
                 table.foreign('tipo_conta_id')
-                .references('id_tipo_conta')
-                .inTable('tipo_conta');
+                    .references('id_tipo_conta')
+                    .inTable('tipo_conta');
                 table.timestamp('dataHora').defaultTo(knex.fn.now());
             });
         }

@@ -12,9 +12,11 @@ export async function up(knex: Knex) {
                 table.integer('promocao', 1).notNullable();
                 table.float('preco_promocional');
                 table.integer('ativo', 1).notNullable();
+                table.integer('categoria_id')
+                    .unsigned().notNullable();
                 table.foreign('categoria_id')
-                .references('id_categoria')
-                .inTable('categoria');
+                    .references('id_categoria')
+                    .inTable('categoria');
                 table.timestamp('dataHora').defaultTo(knex.fn.now());
             });
         }
