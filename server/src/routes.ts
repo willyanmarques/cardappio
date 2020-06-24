@@ -29,10 +29,10 @@ routes.get('/pedido-status/show/:id', pedidoStatus.show);
 routes.put('/pedido-status/update', pedidoStatus.update);
 routes.delete('/pedido-status/delete/:id', pedidoStatus.delete);
 
-routes.get('/Entregadores/index', entregador.index);
-routes.post('/Entregadores/create', entregador.create);
-routes.get('/Entregadores/show/:id', entregador.show);
-routes.put('/Entregadores/update', entregador.update);
-routes.delete('/Entregadores/delete/:id', entregador.delete);
+routes.get('/entregador/index', entregador.index);
+routes.post('/entregador/create', entregador.create);
+routes.get('/entregador/show/:id', entregador.show);
+routes.put('/entregador/update', entregador.update);
+routes.delete('/entregador/delete/:id', entregador.delete);
 
 export default routes;

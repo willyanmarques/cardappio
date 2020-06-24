@@ -6,7 +6,7 @@ const connection = knex({
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'cardappio',
+        database: 'cardappio.dev',
         charset: 'utf8'
     }
 });
