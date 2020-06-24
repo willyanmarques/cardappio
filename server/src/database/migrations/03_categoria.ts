@@ -6,6 +6,7 @@ export async function up(knex: Knex) {
             return knex.schema.createTable('categoria', table => {
                 table.increments('id_categoria').primary();
                 table.string('descricao').notNullable();
+                table.integer('ativo', 1).notNullable();
             });
         }
     });
