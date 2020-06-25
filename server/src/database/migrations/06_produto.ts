@@ -2,9 +2,6 @@ import Knex from 'knex';
 
 export async function up(knex: Knex) {
     knex.schema.hasTable('produto').then(exists => {
-        if (exists) {
-            knex.schema.dropTable('produto');
-        }
         if (!exists) {
             return knex.schema.createTable('produto', table => {
                 table.increments('id_produto').primary();
@@ -14,6 +11,7 @@ export async function up(knex: Knex) {
                 table.float('preco').notNullable();
                 table.integer('promocao', 1).notNullable();
                 table.float('preco_promocional');
+                table.string('imagem');
                 table.integer('ativo', 1).notNullable();
                 table.integer('categoria_id')
                     .unsigned().notNullable();

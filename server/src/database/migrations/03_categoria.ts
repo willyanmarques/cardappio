@@ -2,9 +2,6 @@ import Knex from 'knex';
 
 export async function up(knex: Knex) {
     knex.schema.hasTable('categoria').then(exists => {
-        if (exists) {
-            knex.schema.dropTable('categoria');
-        }
         if (!exists) {
             return knex.schema.createTable('categoria', table => {
                 table.increments('id_categoria').primary();
