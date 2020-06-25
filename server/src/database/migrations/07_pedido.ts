@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
         }
         if (!exists) {
             return knex.schema.createTable('pedido', table => {
-                table.increments('pedido_id').primary();
+                table.increments('id_pedido').primary();
                 table.integer('conta_id').unsigned().notNullable();
                 table.integer('entregador_id').notNullable();
                 table.integer('cupom_id');

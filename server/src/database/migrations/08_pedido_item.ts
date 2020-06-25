@@ -6,11 +6,11 @@ export async function up(knex: Knex) {
             return knex.schema.createTable('pedido_item', table => {
                 table.increments('id_pedido_item').primary();
                 table.integer('id_produto');
-                table.integer('id_pedido').unsigned().notNullable();
+                table.integer('pedido_id').unsigned().notNullable();
                 table.float('valor_produto');
                 table.integer('quantidade');
-                table.foreign('id_pedido')
-                    .references('pedido_id')
+                table.foreign('pedido_id')
+                    .references('id_pedido')
                     .inTable('pedido');
                 table.timestamp('dataHora').defaultTo(knex.fn.now());
             });

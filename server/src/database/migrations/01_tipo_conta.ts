@@ -8,7 +8,7 @@ export async function up(knex: Knex) {
         if (!exists) {
             return knex.schema.createTable('tipo_conta', table => {
                 table.increments('id_tipo_conta').primary();
-                table.string('discricao').notNullable();
+                table.string('descricao').notNullable();
             });
         }
     });

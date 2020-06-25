@@ -13,7 +13,7 @@ export async function up(knex: Knex) {
                 table.string('usuario').notNullable();
                 table.string('senha').notNullable();
                 table.string('email');
-                table.string('cfpcnpj').notNullable().unique();
+                table.string('cpfcnpj').notNullable().unique();
                 table.string('telefone').notNullable();
                 table.string('logradouro');
                 table.string('bairro');
