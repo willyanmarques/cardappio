@@ -1,98 +1,44 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FiArrowDown, FiHome } from 'react-icons/fi';
 
 const Sidebar = () => {
     return (
-        <div className="app-sidebar sidebar-shadow">
-            <div className="app-header__logo">
-                <div className="logo-src"></div>
-                <div className="header__pane ml-auto">
-                    <div>
-                        <button type="button" className="hamburger close-sidebar-btn hamburger--elastic"
-                            data-class="closed-sidebar">
-                            <span className="hamburger-box">
-                                <span className="hamburger-inner"></span>
-                            </span>
-                        </button>
+        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                {/* <div className="sidebar-brand-icon rotate-n-15">
+                    <i className="fas fa-book"></i>
+                </div> */}
+                <div className="sidebar-brand-text mx-3">Cardappio <sup>v.1</sup></div>
+            </a>
+
+            <div className="sidebar-heading">
+                Menu
+            </div>
+
+            <li className="nav-item">
+                <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <span>Empresa</span>
+                </a>
+                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div className="bg-white py-2 collapse-inner rounded">
+                        <h6 className="collapse-header">MENU DA EMPRESA</h6>
+                        <Link to="/" className="collapse-item">Dashboard</Link>
+                        <Link to="/cupons" className="collapse-item">Cupons</Link>
                     </div>
                 </div>
-            </div>
-            <div className="app-header__mobile-menu">
-                <div>
-                    <button type="button" className="hamburger hamburger--elastic mobile-toggle-nav">
-                        <span className="hamburger-box">
-                            <span className="hamburger-inner"></span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div className="app-header__menu">
-                <span>
-                    <button type="button"
-                        className="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                        <span className="btn-icon-wrapper">
-                            <i className="fa fa-ellipsis-v fa-w-6"></i>
-                        </span>
-                    </button>
-                </span>
-            </div>
-            <div className="scrollbar-sidebar">
-                <div className="app-sidebar__inner">
-                    <ul className="vertical-nav-menu">
-                        <li className="app-sidebar__heading">Empresa</li>
-                        <li>
-                            <a href="#">
-                                <i className="metismenu-icon pe-7s-car"></i>
-                                Components
-                            <i className="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i className="metismenu-icon">
-                                        </i>Tabs
-                                </a>
-                                </li>
-                                <li>
-                                    <a href="components-scrollable-elements.html">
-                                        <i className="metismenu-icon">
-                                        </i>Scrollable
-                                </a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li className="app-sidebar__heading">Pedidos</li>
-                        <li>
-                            <a href="dashboard-boxes.html">
-                                <i className="metismenu-icon pe-7s-display2"></i>
-                            Item
-                        </a>
-                        </li>
-                        <li className="app-sidebar__heading">Produtos</li>
-                        <li>
-                            <a href="dashboard-boxes.html">
-                                <i className="metismenu-icon pe-7s-display2"></i>
-                            Item
-                        </a>
-                        </li>
-                        <li className="app-sidebar__heading">Grupos</li>
-                        <li>
-                            <a href="forms-controls.html">
-                                <i className="metismenu-icon pe-7s-mouse">
-                                </i>Forms Controls
-                        </a>
-                        </li>
-                        <li className="app-sidebar__heading">Entregadores</li>
-                        <li>
-                            <a href="charts-chartjs.html">
-                                <i className="metismenu-icon pe-7s-graph2">
-                                </i>ChartJS
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            </li>
+
+            {/* Divider  */}
+            {/* <hr className="sidebar-divider d-none d-md-block" /> */}
+
+            {/* Sidebar Toggler (Sidebar)  */}
+            {/* <div className="text-center d-none d-md-inline">
+                <button className="rounded-circle border-0" id="sidebarToggle"></button>
+            </div> */}
+
+        </ul>
     );
 }
 
