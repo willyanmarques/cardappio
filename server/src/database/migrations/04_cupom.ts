@@ -9,7 +9,8 @@ export async function up(knex: Knex) {
                 table.string('descricao').notNullable();
                 table.float('valor').notNullable();
                 table.string('validade').notNullable();
-                table.integer('is_percentual').notNullable();
+                table.integer('is_percentual', 1).notNullable();
+                table.string('tipo').notNullable();
                 table.integer('ativo', 1).notNullable();
             });
         }
