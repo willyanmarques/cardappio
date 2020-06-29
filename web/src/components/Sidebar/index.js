@@ -1,45 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowDown, FiHome } from 'react-icons/fi';
 
 const Sidebar = () => {
+
     return (
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                {/* <div className="sidebar-brand-icon rotate-n-15">
-                    <i className="fas fa-book"></i>
-                </div> */}
-                <div className="sidebar-brand-text mx-3">Cardappio <sup>v.1</sup></div>
-            </a>
-
-            <div className="sidebar-heading">
-                Menu
-            </div>
-
-            <li className="nav-item">
-                <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <span>Empresa</span>
-                </a>
-                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">MENU DA EMPRESA</h6>
-                        <Link to="/" className="collapse-item">Dashboard</Link>
-                        <Link to="/cupons" className="collapse-item">Cupons</Link>
+        <div className="nav-left-sidebar sidebar-dark">
+            <div className="menu-list">
+                <nav className="navbar navbar-expand-lg navbar-light">
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav flex-column">
+                            <li className="nav-divider">Menu</li>
+                            <li className="nav-item">
+                                <a className="nav-link"
+                                    href="#"
+                                    data-toggle="collapse"
+                                    aria-expanded="false"
+                                    data-target="#submenu-2"
+                                    aria-controls="submenu-2">
+                                    <i className="fa fa-fw fa-rocket"></i>
+                                    Empresa
+                                </a>
+                                <div id="submenu-2"
+                                    className="collapse submenu">
+                                    <ul className="nav flex-column">
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#">Dashboard</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/cupons" className="nav-link">Cupons</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </li>
-
-            {/* Divider  */}
-            {/* <hr className="sidebar-divider d-none d-md-block" /> */}
-
-            {/* Sidebar Toggler (Sidebar)  */}
-            {/* <div className="text-center d-none d-md-inline">
-                <button className="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> */}
-
-        </ul>
+                </nav>
+            </div>
+        </div>
     );
+
 }
 
 export default Sidebar;
