@@ -1,15 +1,20 @@
 import React from 'react';
+import './styles.css';
 
 const Footer = () => {
+
     return (
-        <footer className="sticky-footer bg-white">
-            <div className="container my-auto">
-                <div className="copyright text-center my-auto">
-                    <span>Copyright &copy; Blackbirds 2020</span>
+        <div className="footer">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        Copyright © 2020 Blackbirds. All rights reserved.
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
     );
+
 }
 
 export default Footer;

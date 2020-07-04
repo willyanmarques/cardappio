@@ -64,9 +64,11 @@ class Cupom {
     ********************************************************************************/
 
     async create(request: Request, response: Response) {
-        const { codigo, descricao, valor, validade, ativo } = request.body;
+        const { codigo, descricao, is_percentual, tipo, valor, validade, ativo } = request.body;
         const dadosCupom = {
             codigo,
+            is_percentual,
+            tipo,
             descricao,
             valor,
             validade,
