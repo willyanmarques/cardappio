@@ -65,14 +65,14 @@ class Conta {
     ********************************************************************************/
 
     async create(request: Request, response: Response) {
-        const { nome, sobrenome, usuario, senha, email, cpfcnpj, telefone, logradouro, bairro, cidade, uf, status, is_whatsapp, tipo_conta_id } = request.body;
+        const { nome, sobrenome, usuario, senha, email, cpf, telefone, logradouro, bairro, cidade, uf, status, is_whatsapp, tipo_conta_id } = request.body;
         const dadosConta = {
             nome,
             sobrenome,
             usuario,
             senha,
             email,
-            cpfcnpj,
+            cpf,
             telefone,
             logradouro,
             bairro,
@@ -129,7 +129,7 @@ class Conta {
             usuario,
             senha,
             email,
-            cpfcnpj,
+            cpf,
             telefone,
             logradouro,
             bairro,
@@ -141,7 +141,7 @@ class Conta {
         } = req.body;
         await knex('conta')
             .where('id_conta', id_conta)
-            .update({ nome, sobrenome, usuario, senha, email, cpfcnpj, telefone, logradouro, bairro, cidade, uf, status, is_whatsapp, tipo_conta_id })
+            .update({ nome, sobrenome, usuario, senha, email, cpf, telefone, logradouro, bairro, cidade, uf, status, is_whatsapp, tipo_conta_id })
             .then(function (resp) {
                 console.log(resp);
                 if (resp <= 0) {

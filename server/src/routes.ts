@@ -6,12 +6,14 @@ import Conta from './controller/Conta';
 import Produto from './controller/Produto';
 import Categoria from './controller/Categoria';
 import Cupom from './controller/Cupom';
+import Pedido from './controller/Pedido';
 
 const pedidoStatus = new PedidoStatus();
 const conta = new Conta();
 const produto = new Produto();
 const categoria = new Categoria();
 const cupom = new Cupom();
+const pedido = new Pedido();
 
 
 const routes = express.Router();
@@ -84,5 +86,17 @@ routes.post('/cupom/create', cupom.create);
 routes.get('/cupom/show/:id_cupom', cupom.show);
 routes.put('/cupom/update', cupom.update);
 routes.delete('/cupom/delete/:id_cupom', cupom.delete);
+
+/*******************************************************************************
+    |Descrição : Rotas para api de Pedidos
+    |Data      : 24/06/2020
+    |Autor     : Gabriel Alcantara
+********************************************************************************/
+
+routes.get('/pedido/index', pedido.index);
+routes.post('/pedido/create', pedido.create);
+routes.get('/pedido/show/:id_pedido', pedido.show);
+//routes.put('/pedido/update', pedido.update);
+//routes.delete('/pedido/delete', pedido.delete);
 
 export default routes;

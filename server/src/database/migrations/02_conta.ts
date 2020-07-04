@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
                 table.string('usuario').notNullable();
                 table.string('senha').notNullable();
                 table.string('email');
-                table.string('cfp').unique();
+                table.string('cpf').unique();
                 table.string('telefone').notNullable();
                 table.integer('is_whatsapp', 1).notNullable();
                 table.string('cep');
